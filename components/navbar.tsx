@@ -34,16 +34,16 @@ const Links = [
 
 const NavLink = ({ children, path }: { children: ReactNode; path: string }) => (
   <Box
-    px={2}
-    py={1}
-    rounded={'md'}
     _hover={{
-      textDecoration: 'none',
-      // bg: useColorModeValue("gray.200", "gray.700"),
-      bg: 'gray.200',
+      textDecoration: 'underline',
     }}
   >
-    <ChakraLink href={path}>
+    <ChakraLink
+      href={path}
+      _hover={{
+        textDecoration: 'none',
+      }}
+    >
       <Text fontSize={'2xl'}>{children}</Text>
     </ChakraLink>
   </Box>
@@ -53,8 +53,18 @@ const Navbar: NextComponentType = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box pt={'20px'}>
-      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+    <>
+      <Flex
+        as="header"
+        position={'fixed'}
+        h={24}
+        w={'100%'}
+        alignItems={'center'}
+        justifyContent={'space-between'}
+        bg={'white'}
+        px={{ sm: '20px', md: '100px' }}
+        mt={0}
+      >
         <IconButton
           size={'md'}
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -62,10 +72,10 @@ const Navbar: NextComponentType = () => {
           display={{ md: 'none' }}
           onClick={isOpen ? onClose : onOpen}
         />
-        <HStack spacing={8}>
+        <HStack spacing={16}>
           <HStack
             as={'nav'}
-            spacing={4}
+            spacing={16}
             display={{ base: 'none', md: 'flex' }}
             justifyContent={'flex-end'}
           >
@@ -93,7 +103,7 @@ const Navbar: NextComponentType = () => {
       </Flex>
 
       {isOpen ? (
-        <Box pb={4} display={{ md: 'none' }}>
+        <Box pt={{ sm: 24 }} pl={{ sm: 6 }} pb={4} display={{ md: 'none' }}>
           <Stack as={'nav'} spacing={4}>
             {Links.map(({ name, path }) => (
               <NavLink key={path} path={path}>
@@ -103,7 +113,7 @@ const Navbar: NextComponentType = () => {
           </Stack>
         </Box>
       ) : null}
-    </Box>
+    </>
   );
 };
 
