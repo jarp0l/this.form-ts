@@ -1,0 +1,71 @@
+import React, { useState } from 'react';
+import {
+  DndContext,
+  KeyboardSensor,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+
+import Droppable from './Droppable';
+import Draggable from './Draggable';
+
+const Form = () => {
+  const sensors = useSensors(
+    useSensor(KeyboardSensor),
+    useSensor(MouseSensor),
+    useSensor(TouchSensor)
+  );
+
+  // const containers = ['A', 'B', 'C'];
+
+  const blocks = [
+    {
+      id: 'text',
+      name: 'text',
+      description: 'A simple text label',
+    },
+    {
+      id: 'textarea',
+      name: 'textarea',
+      description: 'A box for descriptive text',
+    },
+  ];
+
+  const [parent, setParent] = useState(null);
+  // const draggableMarkup = <Draggable id="draggable">Drag me</Draggable>;
+  const draggableMarkup = blocks.map((block) => (
+    <Draggable id={block.id}>{block.name}</Draggable>
+  ));
+
+  const handleDragEnd = (event: any) => {
+    const { over } = event;
+    setParent(over ? over.id : null);
+  };
+
+  return (
+    // <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+    //   {parent === null ? draggableMarkup : null}
+
+    //   {/* {containers.map((id) => (
+    //     <Droppable key={id} id={id}>
+    //       {parent === id ? draggableMarkup : 'Drop here'}
+    //     </Droppable>
+    //   ))} */}
+
+    //   {blocks.map((block) => (
+    //     <Droppable key={block.id} id={block.id}>
+    //       {parent === block.id ? draggableMarkup : 'Drop here'}
+    //     </Droppable>
+    //   ))}
+    // </DndContext>
+
+
+    <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+      
+    </DndContext>
+  );
+}
+
+export default Form;
