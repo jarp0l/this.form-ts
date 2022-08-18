@@ -1,3 +1,7 @@
+`this.form` was planned to become a drag and drop form builder app. This repo does not have a functional form page, but it does have just the UI for landing page with sign in/sign up form. The implementation of database, and drag and drop feature were also planned, however they will hopefully be implemented in future. Moreover, this repo contains typescript code, and the planned migration to javascript was being done in another repo: [`this.form-js`](https://github.com/jarp0l/this.form-js).
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
