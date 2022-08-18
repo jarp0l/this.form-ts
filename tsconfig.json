@@ -20,7 +20,9 @@
     "**/*.ts",
     "**/*.tsx",
     "components/sections/hero/signup.tsx.bak",
-    "components/sections/hero/login.tsx.bak"
+    "components/sections/hero/login.tsx.bak",
+    "components/form/form.tsx.bak",
+    "components/form/Droppable.tsx"
   ],
   "exclude": ["node_modules"]
 }
